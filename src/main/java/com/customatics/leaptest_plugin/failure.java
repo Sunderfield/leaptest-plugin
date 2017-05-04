@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "failure")
-public class Failure
+class Failure
 {
 
     private String message;

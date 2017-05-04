@@ -452,13 +452,13 @@ public class LeaptestJenkinsBridgeBuilder extends Builder implements SimpleBuild
         String junitReportPath = null;
         if (StringUtils.isNotEmpty(getExternalWorkspacePath()) || !"".equals(getExternalWorkspacePath()))
         {
-            junitReportPath = new File( String.format("%1$s\\%2$s\\%3$s",  getExternalWorkspacePath(), workspace.getName(),report)).getPath();
+            junitReportPath = new File( String.format("%1$s/%2$s/%3$s",  getExternalWorkspacePath(), workspace.getName(),report)).getPath();
         }
         else
         {
-            junitReportPath = new File( String.format("%1$s\\workspace\\%2$s\\%3$s",  System.getenv("JENKINS_HOME"),workspace.getName(),report)).getPath();
+            junitReportPath = new File( String.format("%1$s/workspace/%2$s/%3$s",  System.getenv("JENKINS_HOME"),workspace.getName(),report)).getPath();
         }
-
+        
         listener.getLogger().println(junitReportPath);
 
 
