@@ -432,7 +432,13 @@ public class LeaptestJenkinsBridgeBuilder extends Builder  implements SimpleBuil
             report+=".xml";
         }
 
-        String junitReportPath = String.format("%1$s\\%2$s",env.get(MESSAGES.JENKINS_WORKSPACE_VARIABLE),report);
+        String junitReportPath = String.format("%1$s" + File.separator + "%2$s",env.get(MESSAGES.JENKINS_WORKSPACE_VARIABLE),report);
+
+        if(env.get(MESSAGES.JENKINS_WORKSPACE_VARIABLE) == null || env.get(MESSAGES.JENKINS_WORKSPACE_VARIABLE) == ""){
+            junitReportPath = String.format("%1$s" + File.separator + "workspace" + File.separator + "%2$s" + File.separator + "%3$s", env.get("JENKINS_HOME"), env.get("JOB_BASE_NAME"), report);
+            listener.getLogger().println("string was null so new path: " + junitReportPath);
+        }
+
         listener.getLogger().println(junitReportPath);
 
         String[] schidsArray = getSchIds().split("\n|, |,");//was "\n"
